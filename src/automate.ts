@@ -1,3 +1,4 @@
+import "./polyfills.ts";
 // ** Import deno standard library
 import { ensureDir } from "@std/fs";
 
