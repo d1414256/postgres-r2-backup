@@ -1,3 +1,4 @@
+import { Buffer } from "node:buffer";
 // ** Import packages
 import {
   S3Client,
@@ -36,7 +37,7 @@ const S3 = new S3Client({
  * @param key - The object key in the R2 bucket.
  */
 export async function uploadToR2(filePath: string, key: string): Promise<void> {
-  const fileContent = await Deno.readFile(filePath);
+  const fileContent = Buffer.from(await Deno.readFile(filePath));
 
   const command = new PutObjectCommand({
     Bucket: BUCKET_NAME,

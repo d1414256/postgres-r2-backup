@@ -1,3 +1,4 @@
+import { Buffer } from "node:buffer";
 // ** Import packages
 import {
   S3Client,
@@ -33,7 +34,7 @@ export async function multipartUploadToR2(
   filePath: string,
   key: string,
 ): Promise<void> {
-  const fileContent = await Deno.readFile(filePath);
+  const fileContent = Buffer.from(await Deno.readFile(filePath));
   const fileSize = fileContent.length;
   const partSize = 5 * 1024 * 1024; // 5 MiB
   const numParts = Math.ceil(fileSize / partSize);
