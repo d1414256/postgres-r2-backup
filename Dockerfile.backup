@@ -10,7 +10,7 @@ COPY . .
 COPY deno.json /app/deno.json
 
 # Update package index and install required packages
-RUN apk update && apk add --no-cache postgresql16-client bash curl cronie dos2unix
+RUN apk update && apk add --no-cache --repository=https://dl-cdn.alpinelinux.org/alpine/edge/main postgresql18-client bash curl cronie dos2unix
 
 # Add cron job for daily execution of the backup task
 RUN echo "0 0 * * * /app/run_automate.sh >> /var/log/cron.log 2>&1" > /etc/crontabs/root
