@@ -1,3 +1,7 @@
+import { types } from "node:util";
+if (!globalThis.isArrayBufferView) {
+  globalThis.isArrayBufferView = types.isArrayBufferView;
+}
 import { Buffer } from "node:buffer";
 // ** Import packages
 import {
